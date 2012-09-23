@@ -1,0 +1,73 @@
+//////////////////////////////////////////////
+// Width Example (like a media query)
+//////////////////////////////////////////////
+
+// If @pl-content-width is less than 500px, return a background color of red
+.ba-width (@pl-content-width) when (@pl-content-width < 500) {
+	background:red;
+}
+// Usage
+.mydiv {
+	.ba-width(@pl-content-width);
+}
+
+
+
+//////////////////////////////////////////////
+// Text Shadow Example
+//////////////////////////////////////////////
+
+// If @pl-header is greater or equal to 50% in brightness, return a black text shadow
+.ba-textshadow(@pl-headers) when (lightness(@pl-headers) >= 50%) {
+	text-shadow:0 1px 0 @black;
+}
+// Else, if @pl-header is less than 50% in brightness, return a white text shadow
+.ba-textshadow(@pl-headers) when (lightness(@pl-headers) < 50%) {
+	text-shadow:0 1px 0 @white;
+}
+//Usage
+.myheader {
+	.ba-textshadow(@ibp-headers);
+}
+
+
+
+
+//////////////////////////////////////////////
+//  Defining Two Conditions
+//////////////////////////////////////////////
+
+.ba-textshadow(@pl-headers) when (lightness(@pl-headers) >= 50%) and (lightness(@my-var) >= 50%){
+	text-shadow:0 1px 0 @black;
+}
+.ba-textshadow(@pl-headers) when (lightness(@pl-headers) < 50%) and (lightness(@my-var) < 50%){
+	text-shadow:0 1px 0 @white;
+}
+// Usage
+.myheader {
+	.ba-textshadow(@pl-headers);
+}
+
+
+
+
+//////////////////////////////////////////////
+// Box Shadow Example
+//////////////////////////////////////////////
+
+// If @pl-base is greater or equal to 50% in brightness, return a white box shadow
+.ba-boxshadow(@pl-base) when (lightness(@pl-base) >= 50%) {
+	.box-shadow(0 1px 0 @white);
+}
+// Else, if @pl-base is less than 50% in brightness, return a black box shadow
+.ba-boxshadow(@pl-base) when (lightness(@pl-base) < 50%) {
+	.box-shadow(0 1px 0 @black);
+}
+// Usage
+.mydiv {
+	.ba-boxshadow(@pl-base);
+}
+
+
+
+
